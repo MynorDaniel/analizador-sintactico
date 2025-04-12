@@ -1,0 +1,30 @@
+# Comentario de línea válido
+/* Comentario de bloque válido */
+
+PRINT END REPEAT INIT IF TRUE FALSE THEN  # Palabras reservadas
+
+$var
+$_var123
+$nombre-variable_1
+
+"Texto literal válido"
+"Literal con escapado de comillas: \" y salto de línea \n"
+
+123
+0
+-42
++17
+
++ - * / ^   # Operadores aritméticos
+
+=   # Operador de asignación
+
+# Ahora vienen errores:
+
+$123iniciaConNumero    # Identificador inválido
+"String sin cerrar
+/* Comentario bloque sin cerrar
+@caracterNoValido
+$otro@id
+"String con error \q"
+
