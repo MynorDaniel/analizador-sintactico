@@ -1,30 +1,23 @@
-# Comentario de línea válido
-/* Comentario de bloque válido */
+#Estructura Print
+PRINT $X END
 
-PRINT END REPEAT INIT IF TRUE FALSE THEN  # Palabras reservadas
+#Estructura Repeat
+REPEAT 5 INIT
+PRINT 3 END
+PRINT "HOLA" END
+END
 
-$var
-$_var123
-$nombre-variable_1
+#Estructura Condicional
+IF TRUE THEN 
+PRINT 4 END
+END
 
-"Texto literal válido"
-"Literal con escapado de comillas: \" y salto de línea \n"
-
-123
-0
--42
-+17
-
-+ - * / ^   # Operadores aritméticos
-
-=   # Operador de asignación
-
-# Ahora vienen errores:
-
-$123iniciaConNumero    # Identificador inválido
-"String sin cerrar
-/* Comentario bloque sin cerrar
-@caracterNoValido
-$otro@id
-"String con error \q"
-
+#Estructura Asignacion y Expresion
+$x = 5 END
+$x = 5 + 3 END 
+$total = $valor - 10 END 
+$area = 2 * $base END 
+$resultado = (5 + $nota) / 2 END 
+$pot = $base ^ 2 END 
+$res = ($a * $b) - 1 END 
+$x = ((3 + 2) * 4) END

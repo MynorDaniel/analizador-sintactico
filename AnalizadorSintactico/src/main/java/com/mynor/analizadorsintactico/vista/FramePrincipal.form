@@ -4,76 +4,76 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="abrirMenu">
+        <Menu class="javax.swing.JMenu" name="abrir">
           <Properties>
             <Property name="text" type="java.lang.String" value="Abrir"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="abrirMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="abrirMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="guardarMenu">
+        <Menu class="javax.swing.JMenu" name="guardar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardarMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardarMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="guardarComoMenu">
+        <Menu class="javax.swing.JMenu" name="guardarComo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar como"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardarComoMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardarComoMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="nuevoMenu">
+        <Menu class="javax.swing.JMenu" name="nuevo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nuevoMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nuevoMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="copiarMenu">
+        <Menu class="javax.swing.JMenu" name="copiar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Copiar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="copiarMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="copiarMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="pegarMenu">
+        <Menu class="javax.swing.JMenu" name="pegar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pegar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pegarMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pegarMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="deshacerMenu">
+        <Menu class="javax.swing.JMenu" name="deshacer">
           <Properties>
             <Property name="text" type="java.lang.String" value="Deshacer"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deshacerMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deshacerMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="rehacerMenu">
+        <Menu class="javax.swing.JMenu" name="rehacer">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rehacer"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rehacerMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rehacerMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="acercaDeMenu">
+        <Menu class="javax.swing.JMenu" name="acercaDe">
           <Properties>
             <Property name="text" type="java.lang.String" value="Acerca de"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acercaDeMenuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acercaDeMouseClicked"/>
           </Events>
         </Menu>
       </SubComponents>
@@ -191,6 +191,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Analizador Sint&#xe1;ctico"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="analizarBtnMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="tokensBtn">
       <Properties>

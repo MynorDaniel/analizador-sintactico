@@ -8,48 +8,82 @@
 %column
 %char
 
+%{
+import java.util.ArrayList;
+
+private final ArrayList<Token> tokens = new ArrayList<>();
+
+public ArrayList<Token> analizar() throws java.io.IOException {
+    while (yylex() != null) {
+    }
+    return tokens;
+}
+%}
+
 /* ==== Expresiones regulares ==== */
 
-NUMERO                  = [+-]?[1-9][0-9]* | 0
+NUMERO                  = [1-9][0-9]* | 0
 IDENTIFICADOR           = \$[a-zA-Z0-9_-][a-zA-Z0-9_-]*
-PALABRAS_RESERVADAS     = "PRINT" | "END" | "REPEAT" | "INIT" | "IF" | "TRUE" | "FALSE" | "THEN"
 LITERAL                 = \"([^\"\n]|\\.)*\"
-OPERADORES_ARITMETICOS  = "+" | "-" | "*" | "/" | "^"
-OPERADOR_ASIGNACION     = "="
+SUMA                    = "+"
+RESTA                   = "-"
+MULTIPLICACION          = "*"
+DIVISION                = "/"
+ASIGNACION              = "="
+POTENCIA                = "^"
 COMENTARIO_LINEA        = \#.*
 COMENTARIO_BLOQUE       = "/*"([^*]|\r|\n|\*+[^*/])*\*+"/"
 ESPACIOS                = [\ \t\r\n]+
-SECUENCIA_ERROR = ([^a-zA-Z0-9_\"\' \t\r\n\(\)\{\};,\+\-\*/=<>\#\$])+
-SECUENCIA_ERROR2 = ([a-zA-Z0-9_\"\'\(\)\{\};,\+\-\*/=<>\#\$])+
-
-
-
 
 %%
 
 /* ==== Reglas de Tokens ==== */
 
-{NUMERO}                   { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.NUMERO_ENTERO); }
+"PRINT"                    { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.PRINT)); }
 
-{IDENTIFICADOR}            { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.IDENTIFICADOR); }
+"END"                      { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.END)); }
 
-{PALABRAS_RESERVADAS}      { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.PALABRA_RESERVADA); }
+"REPEAT"                   { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.REPEAT)); }
 
-{LITERAL}                  { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.LITERAL); }
+"INIT"                     { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.INIT)); }
 
-{OPERADORES_ARITMETICOS}   { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.OPERADOR_ARITMETICO); }
+"IF"                       { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.IF)); }
 
-{OPERADOR_ASIGNACION}      { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.OPERADOR_ASIGNACION); }
+"TRUE"                     { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.TRUE)); }
 
-{COMENTARIO_LINEA}         { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.COMENTARIO_LINEA); }
+"FALSE"                    { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.FALSE)); }
 
-{COMENTARIO_BLOQUE}        { return new Token(yytext(), yyline+1, yycolumn+1, TipoToken.COMENTARIO_BLOQUE); }
+"THEN"                     { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.THEN)); }
 
-{ESPACIOS}                 { /* Ignorar */ }
+{NUMERO}                   { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.NUMERO_ENTERO)); }
 
-{SECUENCIA_ERROR}          { return new Token(yytext(), yyline + 1, yycolumn + 1, TipoToken.ERROR); }
+{IDENTIFICADOR}            { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.IDENTIFICADOR)); }
 
-{SECUENCIA_ERROR2}          { return new Token(yytext(), yyline + 1, yycolumn + 1, TipoToken.ERROR); }
+{LITERAL}                  { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.LITERAL)); }
 
-.                          { return new Token(yytext(), yyline + 1, yycolumn + 1, TipoToken.ERROR); }
+{SUMA}                     { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.SUMA)); }
+
+{RESTA}                    { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.RESTA)); }
+
+{MULTIPLICACION}           { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.MULTIPLICACION)); }
+
+{DIVISION}                 { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.DIVISION)); }
+
+{POTENCIA}                 { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.POTENCIA)); }
+
+{ASIGNACION}      { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.ASIGNACION)); }
+
+{COMENTARIO_LINEA}         { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.COMENTARIO_LINEA)); }
+
+{COMENTARIO_BLOQUE}        { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.COMENTARIO_BLOQUE)); }
+
+"("                        { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.PARENTESIS_APERTURA)); }
+
+")"                        { tokens.add(Token(yytext(), yyline+1, yycolumn+1, TipoToken.PARENTESIS_CIERRE)); }
+
+{ESPACIOS}                 { /* Ignorar */ }   
+
+<<EOF>>                    { tokens.add(Token("EOF", yyline+1, yycolumn+1, TipoToken.EOF)); }
+
+.                          { tokens.add(Token(yytext(), yyline + 1, yycolumn + 1, TipoToken.ERROR)); }
 
