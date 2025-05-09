@@ -66,14 +66,10 @@ public class Lexer {
   private static final int [] ZZ_CMAP_BLOCKS = zzUnpackcmap_blocks();
 
   private static final String ZZ_CMAP_BLOCKS_PACKED_0 =
-    "\11\0\1\1\1\2\2\3\1\4\22\0\1\1\1\0"+
-    "\1\5\1\6\1\7\3\0\1\10\1\11\1\12\1\13"+
-    "\1\0\1\14\1\0\1\15\1\16\11\17\3\0\1\20"+
-    "\3\0\1\21\2\22\1\23\1\24\1\25\1\22\1\26"+
-    "\1\27\2\22\1\30\1\22\1\31\1\22\1\32\1\22"+
-    "\1\33\1\34\1\35\1\36\5\22\1\0\1\37\1\0"+
-    "\1\40\1\22\1\0\32\22\12\0\1\3\u01a2\0\2\3"+
-    "\326\0\u0100\3";
+    """
+    \t\u0000\u0001\u0001\u0001\u0002\u0002\u0003\u0001\u0004\u0012\u0000\u0001\u0001\u0001\u0000\u0001\u0005\u0001\u0006\u0001\u0007\u0003\u0000\u0001\b\u0001\t\u0001
+    \u0001\u000b\u0001\u0000\u0001\f\u0001\u0000\u0001\r\u0001\u000e\t\u000f\u0003\u0000\u0001\u0010\u0003\u0000\u0001\u0011\u0002\u0012\u0001\u0013\u0001\u0014\u0001\u0015\u0001\u0012\u0001\u0016\u0001\u0017\u0002\u0012\u0001\u0018\u0001\u0012\u0001\u0019\u0001\u0012\u0001\u001a\u0001\u0012\u0001\u001b\u0001\u001c\u0001\u001d\u0001\u001e\u0005\u0012\u0001\u0000\u0001\u001f\u0001\u0000\u0001 \u0001\u0012\u0001\u0000\u001a\u0012
+    \u0000\u0001\u0003\u01a2\u0000\u0002\u0003\u00d6\u0000\u0100\u0003""";
 
   private static int [] zzUnpackcmap_blocks() {
     int [] result = new int[1024];
@@ -100,11 +96,9 @@ public class Lexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\1\1\3\1\1\1\4\1\5"+
-    "\1\6\1\7\1\10\1\11\2\12\1\13\6\1\1\14"+
-    "\1\0\1\15\1\0\1\16\3\0\1\17\5\0\1\15"+
-    "\1\0\1\20\6\0\1\21\1\0\1\22\2\0\1\23"+
-    "\1\24\1\25\1\26\1\0\1\27";
+    """
+    \u0001\u0000\u0001\u0001\u0001\u0002\u0001\u0001\u0001\u0003\u0001\u0001\u0001\u0004\u0001\u0005\u0001\u0006\u0001\u0007\u0001\b\u0001\t\u0002
+    \u0001\u000b\u0006\u0001\u0001\f\u0001\u0000\u0001\r\u0001\u0000\u0001\u000e\u0003\u0000\u0001\u000f\u0005\u0000\u0001\r\u0001\u0000\u0001\u0010\u0006\u0000\u0001\u0011\u0001\u0000\u0001\u0012\u0002\u0000\u0001\u0013\u0001\u0014\u0001\u0015\u0001\u0016\u0001\u0000\u0001\u0017""";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[55];
@@ -164,22 +158,11 @@ public class Lexer {
   private static final int [] ZZ_TRANS = zzUnpacktrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\2\3\1\0\1\3\1\4\1\5\1\6\1\7"+
-    "\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17"+
-    "\3\2\1\20\1\21\1\2\1\22\2\2\1\23\1\24"+
-    "\1\2\1\25\2\2\1\26\42\0\2\3\1\0\1\3"+
-    "\34\0\2\27\1\0\2\27\1\30\31\27\1\31\1\27"+
-    "\2\5\3\0\34\5\14\0\1\32\1\0\2\32\1\0"+
-    "\16\32\14\0\1\33\44\0\2\16\52\0\1\34\30\0"+
-    "\1\35\44\0\1\36\3\0\1\37\42\0\1\40\31\0"+
-    "\1\41\42\0\1\42\4\0\1\43\5\0\2\27\1\0"+
-    "\2\27\1\44\31\27\1\31\1\27\12\33\1\45\26\33"+
-    "\23\0\1\46\45\0\1\47\37\0\1\50\40\0\1\51"+
-    "\43\0\1\52\32\0\1\53\52\0\1\54\2\0\12\33"+
-    "\1\45\2\33\1\55\23\33\34\0\1\56\41\0\1\57"+
-    "\34\0\1\60\33\0\1\61\45\0\1\62\33\0\1\63"+
-    "\40\0\1\64\51\0\1\65\24\0\1\66\54\0\1\67"+
-    "\3\0";
+    """
+    \u0001\u0002\u0002\u0003\u0001\u0000\u0001\u0003\u0001\u0004\u0001\u0005\u0001\u0006\u0001\u0007\u0001\b\u0001\t\u0001
+    \u0001\u000b\u0001\f\u0001\r\u0001\u000e\u0001\u000f\u0003\u0002\u0001\u0010\u0001\u0011\u0001\u0002\u0001\u0012\u0002\u0002\u0001\u0013\u0001\u0014\u0001\u0002\u0001\u0015\u0002\u0002\u0001\u0016"\u0000\u0002\u0003\u0001\u0000\u0001\u0003\u001c\u0000\u0002\u0017\u0001\u0000\u0002\u0017\u0001\u0018\u0019\u0017\u0001\u0019\u0001\u0017\u0002\u0005\u0003\u0000\u001c\u0005\f\u0000\u0001\u001a\u0001\u0000\u0002\u001a\u0001\u0000\u000e\u001a\f\u0000\u0001\u001b$\u0000\u0002\u000e*\u0000\u0001\u001c\u0018\u0000\u0001\u001d$\u0000\u0001\u001e\u0003\u0000\u0001\u001f"\u0000\u0001 \u0019\u0000\u0001!"\u0000\u0001"\u0004\u0000\u0001#\u0005\u0000\u0002\u0017\u0001\u0000\u0002\u0017\u0001$\u0019\u0017\u0001\u0019\u0001\u0017
+    \u001b\u0001%\u0016\u001b\u0013\u0000\u0001&%\u0000\u0001'\u001f\u0000\u0001( \u0000\u0001)#\u0000\u0001*\u001a\u0000\u0001+*\u0000\u0001,\u0002\u0000
+    \u001b\u0001%\u0002\u001b\u0001-\u0013\u001b\u001c\u0000\u0001.!\u0000\u0001/\u001c\u0000\u00010\u001b\u0000\u00011%\u0000\u00012\u001b\u0000\u00013 \u0000\u00014)\u0000\u00015\u0014\u0000\u00016,\u0000\u00017\u0003\u0000""";
 
   private static int [] zzUnpacktrans() {
     int [] result = new int[1122];
@@ -470,7 +453,7 @@ public ArrayList<Token> analizar() {
   /**
    * Resets the input position.
    */
-  private final void yyResetPosition() {
+  private void yyResetPosition() {
       zzAtBOL  = true;
       zzAtEOF  = false;
       zzCurrentPos = 0;
@@ -628,33 +611,37 @@ public ArrayList<Token> analizar() {
         zzCh = Character.codePointAt(zzBufferL, zzCurrentPosL, zzMarkedPosL);
         zzCharCount = Character.charCount(zzCh);
         switch (zzCh) {
-        case '\u000B':  // fall through
-        case '\u000C':  // fall through
-        case '\u0085':  // fall through
-        case '\u2028':  // fall through
-        case '\u2029':
-          yyline++;
-          yycolumn = 0;
-          zzR = false;
-          break;
-        case '\r':
-          yyline++;
-          yycolumn = 0;
-          zzR = true;
-          break;
-        case '\n':
-          if (zzR)
-            zzR = false;
-          else {
+        case '\u000B', '\u000C', '\u0085', '\u2028', '\u2029' -> // fall through
+              {
             yyline++;
             yycolumn = 0;
-          }
-          break;
-        default:
-          zzR = false;
-          yycolumn += zzCharCount;
+            zzR = false;
+              }
+        case '\r' -> // fall through
+              {
+            yyline++;
+            yycolumn = 0;
+            zzR = true;
+              }
+        case '\n' -> // fall through
+              {
+            if (zzR)
+                zzR = false;
+            else {
+                yyline++;
+                yycolumn = 0;
+            }   }
+        default -> // fall through
+              {
+            zzR = false;
+            yycolumn += zzCharCount;
+              }
         }
-      }
+          // fall through
+          // fall through
+          // fall through
+          // fall through
+                }
 
       if (zzR) {
         // peek one character ahead if it is

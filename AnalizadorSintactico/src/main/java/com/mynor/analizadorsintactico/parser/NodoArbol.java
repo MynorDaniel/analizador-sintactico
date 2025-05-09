@@ -14,6 +14,7 @@ import java.util.List;
 public class NodoArbol {
     private String valor;
     private final List<NodoArbol> hijos;
+    private boolean valido = true;
 
     public NodoArbol(String valor) {
         this.valor = valor;
@@ -34,6 +35,14 @@ public class NodoArbol {
 
     public String getValor() {
         return valor;
+    }
+
+    public boolean isValido() {
+        return valido;
+    }
+
+    public void setValido(boolean valido) {
+        this.valido = valido;
     }
     
     

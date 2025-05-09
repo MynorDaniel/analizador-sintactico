@@ -136,7 +136,7 @@ public class Evaluador {
         NodoArbol hijo = hijos.get(0);
         String tipo = hijo.getValor();
 
-        // Si es un número
+        // Si es un numero
         if (esNumero(tipo)) {
             return Double.parseDouble(tipo);
         }

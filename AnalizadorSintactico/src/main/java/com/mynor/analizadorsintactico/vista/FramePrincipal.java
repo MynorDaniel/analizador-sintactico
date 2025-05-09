@@ -30,6 +30,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private ArrayList<Token> tokens;
     private final ArrayList<Token> errores;
     private boolean hayErrores = false;
+    private ArbolSintactico arbolSintactico;
     
     public FramePrincipal() {
         initComponents();
@@ -40,6 +41,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         inputTextArea.getDocument().addUndoableEditListener(e -> undoManager.addEdit(e.getEdit()));
         tokens = new ArrayList<>();
         errores = new ArrayList<>();
+        arbol.setEnabled(false);
         
         inputTextArea.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -71,6 +73,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         outputLabel = new javax.swing.JLabel();
         analizarBtn = new javax.swing.JButton();
         tokensBtn = new javax.swing.JButton();
+        arbol = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         abrir = new javax.swing.JMenu();
         guardar = new javax.swing.JMenu();
@@ -101,7 +104,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         outputLabel.setText("Output");
 
-        analizarBtn.setText("Analizador Sintáctico");
+        analizarBtn.setText("Analizar");
         analizarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 analizarBtnMouseClicked(evt);
@@ -112,6 +115,13 @@ public class FramePrincipal extends javax.swing.JFrame {
         tokensBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tokensBtnMouseClicked(evt);
+            }
+        });
+
+        arbol.setText("Árbol Sintáctico");
+        arbol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                arbolMouseClicked(evt);
             }
         });
 
@@ -203,10 +213,12 @@ public class FramePrincipal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(infoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 383, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 331, Short.MAX_VALUE)
                         .addComponent(tokensBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(analizarBtn)))
+                        .addComponent(analizarBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(arbol)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -222,7 +234,8 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(infoLabel)
                     .addComponent(analizarBtn)
-                    .addComponent(tokensBtn))
+                    .addComponent(tokensBtn)
+                    .addComponent(arbol))
                 .addGap(9, 9, 9))
         );
 
@@ -430,7 +443,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             
             dialogo.add(scrollPane);
             dialogo.setVisible(true);
-        } else {
+        }else {
             JOptionPane.showMessageDialog(this, "Hay errores en el texto.", 
                                           "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
@@ -441,30 +454,56 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_inputTextAreaMouseClicked
 
     private void analizarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_analizarBtnMouseClicked
-        // preguntar archivo de salida
-        // implementar modo panico
-        
-        
-        if (!hayErrores) {
-            String rutaSalida = seleccionarRuta();
-            
+        if(!hayErrores){
             Parser parser = new Parser();
             parser.getTablaAnalisis().imprimirTabla();
-            ArbolSintactico arbol = parser.evaluar(filtrar(tokens));
-            if(arbol != null){
-                arbol.imprimir(); 
-                TablaSimbolos tablaSimbolos = new TablaSimbolos();
-                Evaluador evaluador = new Evaluador(tablaSimbolos);
-                evaluador.evaluar(arbol.getRaiz());
-                tablaSimbolos.imprimir();
+            arbolSintactico = parser.evaluar(filtrar(tokens));
+            Log erroresSintacticos = parser.getErrores();
+
+            arbolSintactico.imprimir(); 
+            TablaSimbolos tablaSimbolos = new TablaSimbolos();
+            Evaluador evaluador = new Evaluador(tablaSimbolos);
+            try {
+                evaluador.evaluar(arbolSintactico.getRaiz());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Hay errores de sintaxis en el texto.", 
+
+            tablaSimbolos.imprimir();
+            
+            ArrayList<String> prints = arbolSintactico.obtenerPrintsDelArbol(arbolSintactico.getRaiz(), tablaSimbolos.getTabla());
+
+            if(!erroresSintacticos.hayLogs()){
+                String rutaSalida = seleccionarRuta();
+                guardarPrints(prints, rutaSalida);
+            }
+            
+            outputTextArea.append(erroresSintacticos.obtenerLogs());
+            
+            arbol.setEnabled(true);
+        }else {
+            JOptionPane.showMessageDialog(this, "Hay errores en el texto.", 
                                           "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
         
         
     }//GEN-LAST:event_analizarBtnMouseClicked
+
+    private void arbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arbolMouseClicked
+        JDialog dialogo = new JDialog(this, "Árbol Sintáctico", true);
+        dialogo.setSize(800, 600);
+        dialogo.setLocationRelativeTo(this);
+
+        JTextArea areaTexto = new JTextArea();
+        areaTexto.setEditable(false);
+        areaTexto.setText(arbolSintactico.obtenerImprimible());
+
+        JScrollPane scroll = new JScrollPane(areaTexto);
+
+        dialogo.add(scroll);
+
+        dialogo.setVisible(true);
+    }//GEN-LAST:event_arbolMouseClicked
 
     private String seleccionarRuta(){
         JFileChooser fileChooser = new JFileChooser();
@@ -488,6 +527,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         tokenizar(inputTextArea.getText());
         verificarErrores();
         mostrarErrores();
+        arbol.setEnabled(false);
     }
     
     private void actualizarLabelInfo(){
@@ -532,6 +572,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu abrir;
     private javax.swing.JMenu acercaDe;
     private javax.swing.JButton analizarBtn;
+    private javax.swing.JButton arbol;
     private javax.swing.JMenu copiar;
     private javax.swing.JMenu deshacer;
     private javax.swing.JMenu guardar;
@@ -553,5 +594,30 @@ public class FramePrincipal extends javax.swing.JFrame {
         tokens.removeIf(token -> token.getTipo() == TipoToken.COMENTARIO_LINEA || token.getTipo() == TipoToken.COMENTARIO_BLOQUE);
         return tokens;
     }
+
+    private void guardarPrints(ArrayList<String> prints, String rutaDirectorio) {
+//        outputTextArea.append("""
+//                              
+//                              PRINTS:""");
+        
+        String nombreBase = "/prints";
+        String extension = ".txt";
+
+        File archivo = new File(rutaDirectorio + nombreBase + extension);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+            for (String linea : prints) {
+                writer.write(linea);
+                writer.newLine();
+//                outputTextArea.append("\n" + linea);
+            }
+            System.out.println("Archivo guardado en: " + archivo.getAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("Error al guardar el archivo: " + e.getMessage());
+        }
+    }
+
+
+
 
 }

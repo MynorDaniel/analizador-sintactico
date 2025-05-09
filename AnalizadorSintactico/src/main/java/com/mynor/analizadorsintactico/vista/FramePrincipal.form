@@ -113,10 +113,12 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="infoLabel" min="-2" pref="254" max="-2" attributes="0"/>
-                      <EmptySpace pref="383" max="32767" attributes="0"/>
+                      <EmptySpace pref="331" max="32767" attributes="0"/>
                       <Component id="tokensBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="analizarBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="arbol" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -137,6 +139,7 @@
                   <Component id="infoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="analizarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tokensBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="arbol" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
           </Group>
@@ -189,7 +192,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="analizarBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Analizador Sint&#xe1;ctico"/>
+        <Property name="text" type="java.lang.String" value="Analizar"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="analizarBtnMouseClicked"/>
@@ -201,6 +204,14 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tokensBtnMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="arbol">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc1;rbol Sint&#xe1;ctico"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="arbolMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

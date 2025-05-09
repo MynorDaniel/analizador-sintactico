@@ -33,4 +33,8 @@ public class TablaSimbolos {
     public void imprimir() {
         tabla.forEach((k, v) -> System.out.println(k + " = " + v));
     }
+
+    public Map<String, Double> getTabla() {
+        return tabla;
+    }
 }
